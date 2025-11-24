@@ -66,36 +66,77 @@
 
     <title>DubaiFilmMaker – Homepage</title>
 
-    <style>
-      /* Fix video thumbnail aspect ratio - prevent squishing */
-      .bloc-projects-listing
-        .box--work__video.video-wrapper.has-poster
-        img.video-img-poster {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-      }
+ <style>
+  /* Fix video thumbnail aspect ratio - prevent squishing */
+  .bloc-projects-listing
+    .box--work__video.video-wrapper.has-poster
+    img.video-img-poster {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
 
-      /* Ensure video wrapper maintains proper dimensions */
-      .bloc-projects-listing .box--work__video.video-wrapper {
-        position: relative !important;
-        overflow: hidden !important;
-      }
-
-      /* Header styles loaded from data/header.json - prevent FOUC */
-      .header__logo {
-        object-fit: contain !important;
-        height: auto !important;
-        opacity: 0;
-        transition: opacity 0.15s ease-in;
-      }
-      
-      .header__logo.loaded {
-        opacity: 1;
-      }
-    </style>
+  /* Reversed Header Styles (Mobile) */
+  @media (max-width: 767px) {
+    .header__nav {
+      display: flex !important;
+      align-items: center !important;
+      padding: 0 !important;
+      min-height: 50px !important;
+      flex-direction: row-reverse !important;
+      justify-content: space-between !important;
+      gap: 24px !important;
+      width: 100% !important;
+    }
     
+    .header__nav .logo-link {
+      max-width: 180px !important;
+      flex-shrink: 0 !important;
+      padding-right: 0 !important;
+      width: auto !important;
+      margin: 0 !important;
+    }
+    
+    .header__logo {
+      max-height: 80px !important;
+      max-width: 100% !important;
+      width: auto !important;
+      margin: 0 !important;
+      opacity: 1 !important;
+    }
+    
+    .btn--menu {
+      width: auto !important;
+      flex-shrink: 0 !important;
+      margin: 0 !important;
+      position: relative !important;
+    }
+  }
+
+  /* Desktop styles (if needed) */
+  @media (min-width: 768px) {
+    .header__logo {
+      max-height: 80px !important;
+      width: 100% !important;
+    }
+  }
+
+  /* Extra large screens (if needed) */
+  @media (min-width: 1200px) {
+    .header__logo {
+      max-height: 100px !important;
+    }
+  }
+
+  /* Logo transition */
+  .header__logo {
+    object-fit: contain !important;
+    height: auto !important;
+    transition: opacity 0.15s ease-in;
+  }
+</style>
+
     <!-- Critical header CSS - loads synchronously to prevent FOUC -->
     <script>
       (function() {
